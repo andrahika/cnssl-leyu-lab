@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>球探体育 · 信息指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f8d5b0 60%, #f5c491 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.2rem;
+      color: #2c1f14;
+      line-height: 1.6;
+    }
+
+    .page-wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 卡片设计 */
+    .card {
+      background: rgba(255, 251, 244, 0.9);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 28px;
+      box-shadow: 0 10px 28px rgba(140, 80, 30, 0.10), 0 4px 12px rgba(0,0,0,0.03);
+      padding: 2.2rem 2rem;
+      border: 1px solid rgba(255, 245, 230, 0.65);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 32px rgba(140, 80, 30, 0.14);
+    }
+
+    /* 标题体系 */
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #3f281b;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #6b4e38;
+      border-left: 4px solid #dba977;
+      padding-left: 1rem;
+      margin: 0.5rem 0 1.5rem 0;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #443020;
+      margin-bottom: 0.9rem;
+      border-bottom: 2px solid #e8d0b4;
+      padding-bottom: 0.3rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #5a3f2c;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 网格目录感 */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0 1.8rem 0;
+    }
+
+    .dir-item {
+      background: #fffcf5;
+      border-radius: 60px;
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+      font-weight: 500;
+      color: #3f2b1b;
+      border: 1px solid #eddccb;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(90, 60, 35, 0.04);
+    }
+
+    .dir-item:hover {
+      background: #f1e1d0;
+      border-color: #c9ad90;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(100, 65, 35, 0.08);
+      cursor: default;
+    }
+
+    .dir-item span {
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    /* 两栏信息 */
+    .info-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      margin: 1.8rem 0 1rem 0;
+    }
+
+    .info-block {
+      flex: 1 1 240px;
+      background: #fffbf5;
+      padding: 1.4rem 1.6rem;
+      border-radius: 24px;
+      border: 1px solid #eee1d1;
+      box-shadow: 0 4px 10px rgba(80, 50, 25, 0.03);
+    }
+
+    .info-block p {
+      margin-bottom: 0.6rem;
+    }
+
+    /* 提示区 + FAQ 混合 */
+    .tip-card {
+      background: #f7ede0;
+      border-radius: 26px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 1.2rem 0;
+      border-left: 6px solid #b68d6b;
+    }
+
+    .faq-mini {
+      margin-top: 0.8rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      background: #fffbf2;
+      border-radius: 40px;
+      padding: 0.7rem 1.4rem;
+      border: 1px solid #e5d2be;
+      transition: 0.15s;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #4f3724;
+      cursor: pointer;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      color: #b48a68;
+    }
+
+    .faq-mini details p {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #3e2d1d;
+      padding: 0.3rem 0 0.2rem 0;
+      border-top: 1px dashed #dac2ab;
+    }
+
+    /* 相关链接区 */
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      margin: 1.2rem 0 1.8rem 0;
+      align-items: center;
+    }
+
+    .related-links a {
+      color: #6b4a2c;
+      background: #f1e2d1;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 450;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+
+    .related-links a:hover {
+      background: #e4cfb6;
+      border-color: #b38862;
+      color: #2f1f10;
+    }
+
+    .ref-note {
+      color: #735a43;
+      font-size: 0.92rem;
+      margin: 0.5rem 0 0 0;
+    }
+
+    /* 内嵌链接 (句子中的球探体育) */
+    .inline-link {
+      color: #7a542e;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c9a882;
+    }
+
+    .inline-link:hover {
+      color: #3d2616;
+      text-decoration-color: #7a542e;
+    }
+
+    /* footer 温和 */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding: 1rem 0;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #7b624b;
+      border-top: 1px solid #dcc7b1;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.9rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .card {
+        padding: 1.6rem 1.2rem;
+      }
+      .directory-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.9rem;
+      }
+      .info-split {
+        flex-direction: column;
+      }
+      .tip-card {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .dir-item {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero + 标题卡片 -->
+  <div class="card" style="margin-bottom: 1.6rem;">
+    <h1>⚽ 球探 · 信息参考</h1>
+    <div class="subhead">赛事查询 · 数据对照 · 延伸阅读</div>
+    <p style="font-size: 1.05rem; margin-top: 0.5rem;">
+      在体育资讯与比赛记录之间，搭建一个轻量的知识查询入口。日常查赛程、看积分、找交锋记录，
+      通过<a href="https://beta-qiutantiyu.com" class="inline-link">球探体育</a>获取结构化内容，
+      适合赛前准备与赛后对照。
+    </p>
+  </div>
+
+  <!-- 目录感：常用查询项 -->
+  <div class="card" style="margin-bottom: 1.6rem;">
+    <h2>📋 常用检索目录</h2>
+    <div class="directory-grid">
+      <div class="dir-item">🏆 联赛积分 <span>· 对照</span></div>
+      <div class="dir-item">📅 赛程日历 <span>· 未来</span></div>
+      <div class="dir-item">🔄 交锋记录 <span>· 历史</span></div>
+      <div class="dir-item">📊 数据统计 <span>· 分布</span></div>
+      <div class="dir-item">🧾 球队阵容 <span>· 名单</span></div>
+      <div class="dir-item">📰 资讯摘要 <span>· 动态</span></div>
+    </div>
+    <p style="color: #5d4632; font-size: 0.95rem; margin-top: 0.5rem;">
+      每个条目都对应一个信息集合，适合快速定位需要查询的板块。从联赛到球队，从赛前到赛后。
+    </p>
+  </div>
+
+  <!-- 说明 + 特点区域 (两栏) -->
+  <div class="info-split">
+    <div class="info-block">
+      <h3>📌 查询场景举例</h3>
+      <p>▸ 周末赛前：查看球队近期状态、主客场趋势。</p>
+      <p>▸ 赛后复盘：核对实际比分与数据统计。</p>
+      <p>▸ 联赛中段：比较积分榜变化与净胜球差异。</p>
+      <p>▸ 延伸阅读：浏览相关赛事情报与短评。</p>
+    </div>
+    <div class="info-block">
+      <h3>📎 结构特点</h3>
+      <p>以赛事数据为核心，按联赛、时间、球队分类。<a href="https://beta-qiutantiyu.com" class="inline-link">球探体育</a>呈现相对清晰的分组，降低重复跳转。数据更新频率稳定，适合日常对照查阅，也适用于多维度统计参考。</p>
+    </div>
+  </div>
+
+  <!-- 提示区 + FAQ 摘要 (合并) -->
+  <div class="tip-card">
+    <h3 style="border: none; margin-bottom: 0.4rem;">💡 使用提示</h3>
+    <p>赛程时间通常以本地时区显示，跨周赛事建议核对日期；积分排名与实时赛果可能存在延迟，请以官方终场数据为准。对于延伸阅读部分，可结合赛季走势综合分析。</p>
+
+    <div class="faq-mini">
+      <details>
+        <summary>FAQ · 数据更新频率大概多久？</summary>
+        <p>通常比赛结束后数分钟内完成赛果更新，积分榜和统计数据在每日凌晨同步。具体可根据页面标注的时间戳判断时效。</p>
+      </details>
+      <details>
+        <summary>FAQ · 能否按球队查看历史交锋？</summary>
+        <p>可以。在队伍资料页或交锋记录板块选择两支球队即可显示过往对阵比分，包含主客场与赛事性质。</p>
+      </details>
+      <details>
+        <summary>FAQ · 手机浏览适配吗？</summary>
+        <p>界面采用自适应布局，手机端可缩放、滑动查看表格与数据卡片，部分功能建议横屏获取更佳体验。</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- 相关信息区 -->
+  <div class="card" style="margin-top: 1rem;">
+    <h2>🔗 相关信息</h2>
+    <div class="related-links">
+      <a href="#">赛程速览</a>
+      <a href="#">积分变化</a>
+      <a href="#">球队数据</a>
+      <a href="#">射手榜</a>
+      <a href="#">赛事专题</a>
+    </div>
+    <p class="ref-note">
+      部分板块需跳转至对应页面，数据仅供参考。通过<a href="https://beta-qiutantiyu.com" class="inline-link">球探体育</a>可获取更完整的联赛与杯赛信息，建议搭配使用。
+    </p>
+  </div>
+
+  <!-- 温和页脚 -->
+  <div class="footer-note">
+    内容导航 · 信息参考 · 保持开放
+  </div>
+
+</div>
+</body>
+</html>
